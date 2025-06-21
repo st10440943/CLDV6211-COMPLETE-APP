@@ -1,0 +1,45 @@
+﻿@model CLDV6211_PART1_BOOKING_APP.Models.Event
+
+@{
+    ViewData["Title"] = "Edit Event";
+}
+
+<h1 class="mb-4">@ViewData["Title"]</h1>
+
+<form asp-action="Edit" asp-controller="Event" method="post">
+
+    <input type="hidden" asp-for="EventID" />
+
+    <div class="form-group mb-3">
+        <label asp-for="EventName" class="form-label"></label>
+        <input asp-for="EventName" class="form-control" />
+        <span asp-validation-for="EventName" class="text-danger"></span>
+    </div>
+
+    <div class="form-group mb-3">
+        <label asp-for="EventDate" class="form-label"></label>
+        <input asp-for="EventDate" class="form-control" type="date" />
+        <span asp-validation-for="EventDate" class="text-danger"></span>
+    </div>
+
+    <div class="form-group mb-3">
+        <label asp-for="VenueID" class="form-label"></label>
+        <select asp-for="VenueID" class="form-control" asp-items="@(ViewData["VenueID"] as SelectList)">
+            <option value="">-- Select Venue --</option>
+        </select>
+        <span asp-validation-for="VenueID" class="text-danger"></span>
+    </div>
+
+    <div class="form-group mb-4">
+        <label asp-for="Description" class="form-label"></label>
+        <textarea asp-for="Description" class="form-control"></textarea>
+        <span asp-validation-for="Description" class="text-danger"></span>
+    </div>
+
+    <button type="submit" class="btn btn-primary">Save Changes</button>
+    <a asp-action="Index" class="btn btn-secondary ms-2">Back to List</a>
+</form>
+
+@section Scripts {
+    @await Html.PartialAsync("_ValidationScriptsPartial")
+}

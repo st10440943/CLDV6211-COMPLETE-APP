@@ -1,0 +1,34 @@
+﻿@model List<String>
+@{
+    ViewBag.Title = "Upload and Preview Files";
+}
+<div class="container nt-4">
+    <h2 class="text-primary">Upload a File</h2>
+    <form asp-action="Upload" asp-controller="File" method="post" enctype="multipart/form-data" class="mb-4 p-3 border rounded bg-light shadow-sm">
+        <div class="mb-3">
+            <label for="uploadedFile" class="form-label">Select a File:</label>
+            <input type="file" name="uploadedFile" id="uploadedFile" class="form-control"/>
+        </div>
+        <button type="submit" class="btn btn-primary">upload</button>
+    </form>
+    <h3 class="text-success">Uploaded Images</h3>
+    @if (Model != null && Model.Count > 0)
+    {
+        <ul class="list-group">
+            @foreach (var imageUrl in Model)
+            {
+                <li class="list-groip-item">
+                    <a asp-action="ViewFile" asp-controller="File" asp-route-fileUrl ="@imageUrl" class="text-decoration-none">
+                        @System.IO.Path.GetFileName(imageUrl)
+
+                    </a> - @imageUrl
+                </li>
+            }
+        </ul>
+    }
+    else
+    {
+        <p class="fst-italic text-muted">No files uploaded yet.</p>
+    }
+
+</div>

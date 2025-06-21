@@ -1,0 +1,26 @@
+﻿@model CLDV6211_PART1_BOOKING_APP.Models.Event
+@if (TempData["ErrorMessage"] != null)
+{
+    <div class="alert alert-danger">
+        @TempData["ErrorMessage"]
+    </div>
+}
+@{
+    ViewData["Title"] = "Delete Event";
+}
+
+<h1>@ViewData["Title"]</h1>
+
+<h3>Are you sure you want to delete this event?</h3>
+
+<div>
+    <h4>@Model.EventName</h4>
+    <p>Venue: @Model.Venue?.VenueName</p>
+    <p>Event Date: @Model.EventDate.ToShortDateString()</p>
+</div>
+
+<form asp-action="Delete" method="post">
+    <input type="hidden" asp-for="EventID" />
+    <button type="submit" class="btn btn-danger">Delete</button>
+    <a href="@Url.Action("Index", "Event")" class="btn btn-secondary">Cancel</a>
+</form>

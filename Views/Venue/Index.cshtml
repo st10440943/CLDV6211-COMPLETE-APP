@@ -1,0 +1,37 @@
+﻿@model IEnumerable<CLDV6211_PART1_BOOKING_APP.Models.Venue>
+
+@{
+    ViewData["Title"] = "Venue List";
+}
+
+<h1>@ViewData["Title"]</h1>
+
+<p>
+    <a href="@Url.Action("Create")" class="btn btn-primary">Create New Venue</a>
+</p>
+<table class="table">
+    <thead>
+        <tr>
+            <th>Venue Name</th>
+            <th>Location</th>
+            <th>Capacity</th>
+            <th>Image</th>
+            <th>Actions</th>
+        </tr>
+    </thead>
+    <tbody>
+        @foreach (var venue in Model)
+        {
+            <tr>
+                <td>@venue.VenueName</td>
+                <td>@venue.Location</td>
+                <td>@venue.Capacity</td>
+                <td><img src="@venue.ImageUrl" alt="Venue Image" width="100" /></td>
+                <td>
+                    <a href="@Url.Action("Edit", new { id = venue.VenueID })" class="btn btn-warning">Edit</a>
+                    <a href="@Url.Action("Delete", new { id = venue.VenueID })" class="btn btn-danger">Delete</a>
+                </td>
+            </tr>
+        }
+    </tbody>
+</table>

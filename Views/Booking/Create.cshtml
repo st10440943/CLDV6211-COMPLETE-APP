@@ -1,0 +1,63 @@
+﻿@model CLDV6211_PART1_BOOKING_APP.Models.Booking
+
+@{
+    ViewData["Title"] = "Create Booking";
+}
+
+<h1>@ViewData["Title"]</h1>
+
+<form method="post" asp-action="Create">
+    <!-- Event Selection -->
+    <div class="form-group">
+        <label asp-for="EventID"></label>
+        <select asp-for="EventID" class="form-control" asp-items="@(ViewData["EventID"] as SelectList)">
+            <option value="">-- Select Event --</option>
+        </select>
+        <span asp-validation-for="EventID" class="text-danger"></span>
+    </div>
+
+    <!-- Venue Selection -->
+    <div class="form-group">
+        <label asp-for="VenueID"></label>
+        <select asp-for="VenueID" class="form-control" asp-items="@(ViewData["VenueID"] as SelectList)">
+            <option value="">-- Select Venue --</option>
+        </select>
+        <span asp-validation-for="VenueID" class="text-danger"></span>
+    </div>
+
+    <!-- Booking Date -->
+    <div class="form-group">
+        <label asp-for="BookingDate"></label>
+        <input asp-for="BookingDate" class="form-control" type="date" />
+        <span asp-validation-for="BookingDate" class="text-danger"></span>
+    </div>
+
+    <!-- Status Selection -->
+    <div class="form-group">
+        <label asp-for="Status"></label>
+        <select asp-for="Status" class="form-control">
+            <option value="Confirmed">Confirmed</option>
+            <option value="Pending">Pending</option>
+            <option value="Cancelled">Cancelled</option>
+        </select>
+        <span asp-validation-for="Status" class="text-danger"></span>
+    </div>
+
+    <!-- Submit Button -->
+    <button type="submit" class="btn btn-primary">Create</button>
+</form>
+
+<!-- Display Validation Errors (e.g., double booking) -->
+@if (ViewData["Error"] != null)
+{
+    <div class="alert alert-danger">
+        @ViewData["Error"]
+    </div>
+}
+
+<!-- Link to go back to the booking list -->
+<a href="@Url.Action("Index")">Back to List</a>
+
+@section Scripts {
+    @await Html.PartialAsync("_ValidationScriptsPartial")
+}

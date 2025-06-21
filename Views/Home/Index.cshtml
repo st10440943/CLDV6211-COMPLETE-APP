@@ -1,0 +1,41 @@
+﻿@{
+    ViewData["Title"] = "Welcome to EventEase";
+}
+
+<div class="text-center py-5 bg-light shadow-sm rounded">
+    <h1 class="display-4 fw-bold text-primary">Welcome to EventEase</h1>
+    <p class="lead">Your all-in-one venue and event booking solution.</p>
+    <a class="btn btn-primary btn-lg mt-3" asp-controller="Booking" asp-action="Index">Book Now</a>
+</div>
+
+<div class="container mt-5">
+    <div class="row text-center">
+        <div class="col-md-4 mb-4">
+            <div class="card h-100 shadow-sm border-0">
+                <div class="card-body">
+                    <h5 class="card-title text-primary">Browse Venues</h5>
+                    <p class="card-text">Find the perfect venue for your next event.</p>
+                    <a href="@Url.Action("Index", "Venue")" class="btn btn-outline-primary">Explore Venues</a>
+                </div>
+            </div>
+        </div>
+        <div class="col-md-4 mb-4">
+            <div class="card h-100 shadow-sm border-0">
+                <div class="card-body">
+                    <h5 class="card-title text-success">View Events</h5>
+                    <p class="card-text">Check out upcoming events and important details.</p>
+                    <a href="@Url.Action("Index", "Event")" class="btn btn-outline-success">See Events</a>
+                </div>
+            </div>
+        </div>
+        <div class="col-md-4 mb-4">
+            <div class="card h-100 shadow-sm border-0">
+                <div class="card-body">
+                    <h5 class="card-title text-warning">Manage Bookings</h5>
+                    <p class="card-text">View or manage your existing bookings easily.</p>
+                    <a href="@Url.Action("Index", "Booking")" class="btn btn-outline-warning">Manage Bookings</a>
+                </div>
+            </div>
+        </div>
+    </div>
+</div>

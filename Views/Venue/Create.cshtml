@@ -1,0 +1,27 @@
+﻿@model CLDV6211_PART1_BOOKING_APP.Models.Venue
+
+@{
+    ViewData["Title"] = "Create Venue";
+}
+
+<h1>@ViewData["Title"]</h1>
+
+<form asp-action="Create">
+    <div class="form-group">
+        <label for="VenueName">Venue Name</label>
+        <input type="text" class="form-control" id="VenueName" name="VenueName" required />
+    </div>
+    <div class="form-group">
+        <label for="Location">Location</label>
+        <input type="text" class="form-control" id="Location" name="Location" />
+    </div>
+    <div class="form-group">
+        <label for="Capacity">Capacity</label>
+        <input type="number" class="form-control" id="Capacity" name="Capacity" required />
+    </div>
+    <div class="form-group">
+        <label for="ImageUrl">Image URL</label>
+        <input type="text" class="form-control" id="ImageUrl" name="ImageUrl" />
+    </div>
+    <button type="submit" class="btn btn-primary">Create</button>
+</form>
